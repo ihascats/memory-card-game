@@ -41,62 +41,61 @@ export default function GameBoard(props) {
   const [score, setScore] = useState(0);
   const [best, setBest] = useState(0);
 
-  const arrayOfImages = [
-    <MemoryCard
-      game={gameFinished}
-      key="blushContent"
-      alt="blushContent"
-      source={blushContent}
-    />,
-    <MemoryCard
-      game={gameFinished}
-      key="cryingSad"
-      alt="cryingSad"
-      source={cryingSad}
-    />,
-    <MemoryCard game={gameFinished} key="dead" alt="dead" source={dead} />,
-    <MemoryCard game={gameFinished} key="happy" alt="happy" source={happy} />,
-    <MemoryCard
-      game={gameFinished}
-      key="happyBlush"
-      alt="happyBlush"
-      source={happyBlush}
-    />,
-    <MemoryCard
-      game={gameFinished}
-      key="inLove"
-      alt="inLove"
-      source={inLove}
-    />,
-    <MemoryCard
-      game={gameFinished}
-      key="reluctant"
-      alt="reluctant"
-      source={reluctant}
-    />,
-    <MemoryCard game={gameFinished} key="sad" alt="sad" source={sad} />,
-    <MemoryCard
-      game={gameFinished}
-      key="sunglasses"
-      alt="sunglasses"
-      source={sunglasses}
-    />,
-    <MemoryCard
-      game={gameFinished}
-      key="surprised"
-      alt="surprised"
-      source={surprised}
-    />,
-    <MemoryCard
-      game={gameFinished}
-      key="surprisedBlank"
-      alt="surprisedBlank"
-      source={surprisedBlank}
-    />,
-    <MemoryCard key="tearSad" alt="tearSad" source={tearSad} />,
-  ];
-
   useEffect(() => {
+    const arrayOfImages = [
+      <MemoryCard
+        game={gameFinished}
+        key="blushContent"
+        alt="blushContent"
+        source={blushContent}
+      />,
+      <MemoryCard
+        game={gameFinished}
+        key="cryingSad"
+        alt="cryingSad"
+        source={cryingSad}
+      />,
+      <MemoryCard game={gameFinished} key="dead" alt="dead" source={dead} />,
+      <MemoryCard game={gameFinished} key="happy" alt="happy" source={happy} />,
+      <MemoryCard
+        game={gameFinished}
+        key="happyBlush"
+        alt="happyBlush"
+        source={happyBlush}
+      />,
+      <MemoryCard
+        game={gameFinished}
+        key="inLove"
+        alt="inLove"
+        source={inLove}
+      />,
+      <MemoryCard
+        game={gameFinished}
+        key="reluctant"
+        alt="reluctant"
+        source={reluctant}
+      />,
+      <MemoryCard game={gameFinished} key="sad" alt="sad" source={sad} />,
+      <MemoryCard
+        game={gameFinished}
+        key="sunglasses"
+        alt="sunglasses"
+        source={sunglasses}
+      />,
+      <MemoryCard
+        game={gameFinished}
+        key="surprised"
+        alt="surprised"
+        source={surprised}
+      />,
+      <MemoryCard
+        game={gameFinished}
+        key="surprisedBlank"
+        alt="surprisedBlank"
+        source={surprisedBlank}
+      />,
+      <MemoryCard key="tearSad" alt="tearSad" source={tearSad} />,
+    ];
     if (!cardArray) {
       setCardArray(shuffle(arrayOfImages));
     }
@@ -107,13 +106,13 @@ export default function GameBoard(props) {
       setBest(score);
     }
 
-    if (!arrayOfImages) {
-      return;
-    }
-  }, [cardArray, score, arrayOfImages]);
+    if (!best) return;
+
+    if (!arrayOfImages) return;
+  }, [cardArray, score, best]);
 
   function shuffleCards() {
-    setCardArray(shuffle(arrayOfImages));
+    setCardArray(shuffle(cardArray));
   }
 
   function gameFinished() {
