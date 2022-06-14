@@ -1,4 +1,5 @@
 img {
   width: fit-content;
   width: 100%;
+  user-select: none;
 }

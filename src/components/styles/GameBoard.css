@@ -1,6 +1,40 @@
-div {
+.container {
+  display: grid;
+  justify-items: center;
+  color: rgb(236, 216, 148);
+}
+
+.container > h1 {
+  font-size: 48px;
+  background-color: rgba(0, 0, 0, 0.3);
+  padding: 30px;
+  border-radius: 16px;
+}
+
+.game {
   width: 80vw;
   display: grid;
   grid-template-columns: repeat(6, 1fr);
   gap: 4vw;
+  min-width: 810px;
+}
+
+.reset {
+  position: fixed; /* or absolute */
+  top: 50%;
+  left: 50%;
+  margin: -81.94px 0 0 -163.875px;
+  display: grid;
+  color: rgb(236, 216, 148);
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 20px 80px;
+}
+
+button {
+  border: none;
+  color: rgb(236, 216, 148);
+  background-color: rgb(0, 0, 0, 0.3);
+  font-size: 24px;
+  letter-spacing: 2px;
+  padding: 8px 32px;
 }

@@ -38,6 +38,9 @@ export default function GameBoard(props) {
 
   const [cardArray, setCardArray] = useState();
   const [endGame, setEndGame] = useState(false);
+  const [score, setScore] = useState(0);
+  const [best, setBest] = useState(0);
+
   const arrayOfImages = [
     <MemoryCard
       game={gameFinished}
@@ -97,24 +100,77 @@ export default function GameBoard(props) {
     if (!cardArray) {
       setCardArray(shuffle(arrayOfImages));
     }
-  }, [cardArray]);
+    if (score === 12) {
+      setEndGame(true);
+    }
+    if (score > best) {
+      setBest(score);
+    }
+
+    if (!arrayOfImages) {
+      return;
+    }
+  }, [cardArray, score, arrayOfImages]);
 
   function shuffleCards() {
     setCardArray(shuffle(arrayOfImages));
   }
 
   function gameFinished() {
-    console.log('Game Ended');
     setEndGame(true);
   }
 
+  function addScore() {
+    setScore(score + 1);
+  }
+
+  const resetScreen = (
+    <div className="reset">
+      <h1>You Lost :C</h1>
+      <button
+        onClick={() => {
+          setEndGame(false);
+          setScore(0);
+        }}
+      >
+        Restart
+      </button>
+    </div>
+  );
+
+  const winScreen = (
+    <div className="reset">
+      <h1>You WON!! C:</h1>
+      <button
+        onClick={() => {
+          setEndGame(false);
+          setScore(0);
+        }}
+      >
+        Play Again!
+      </button>
+    </div>
+  );
+
   return (
-    <div
-      onClick={(event) => {
-        shuffleCards();
-      }}
-    >
-      {cardArray}
+    <div className="container">
+      {endGame && score !== 12 ? resetScreen : null}
+      {score === 12 ? winScreen : null}
+      <h1>
+        Current Score: {score} | All time best: {best}
+      </h1>
+      <div
+        onClick={(event) => {
+          if (endGame) return;
+          const image = event.target.closest('img');
+          if (!image || image === null) return;
+          addScore();
+          shuffleCards();
+        }}
+        className="game"
+      >
+        {cardArray}
+      </div>
     </div>
   );
 }
