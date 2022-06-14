@@ -2,6 +2,9 @@
   display: grid;
   justify-items: center;
   color: rgb(236, 216, 148);
+  grid-template-rows: min-content min-content;
+  justify-items: center;
+  align-content: center;
 }
 
 .container > h1 {
