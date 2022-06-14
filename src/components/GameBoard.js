@@ -130,6 +130,7 @@ export default function GameBoard(props) {
         onClick={() => {
           setEndGame(false);
           setScore(0);
+          setCardArray();
         }}
       >
         Restart
