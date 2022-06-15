@@ -8,5 +8,5 @@ img {
 img:hover {
   background-color: rgba(228, 191, 111, 0.3);
   border-radius: 50%;
-  width: 90%;
+  /* width: 90%; */
 }
